@@ -1,6 +1,6 @@
 # enable color support of ls and also add handy aliases
 #if [ -x /usr/bin/dircolors ]; then
-    eval `dircolors -b .bash_dircolors` # eigene festlegung, aus: http://www.infodrom.org/~joey/Writing/freeX/console/
+    eval `dircolors -b /home/${USER}/.bash_dircolors` # eigene festlegung, aus: http://www.infodrom.org/~joey/Writing/freeX/console/
     # war mal eval `dircolors -b`
     #alias ls='ls --color=auto' # gibt ls farbig aus
     #alias dir='dir --color=auto'
@@ -29,8 +29,11 @@ alias b='cd ..' # entspricht hoch
 # sonstiges
 #alias urxvt="urxvt -tr -sh 30 -fg gray +sb"
 #alias m='mplayer -playlist ~/playlist.m3u -shuffle' # musik starten (mit mplayer + playlist) 
-alias mu='mocp -S ; mocp -p' # musik starten (mit mocp)
-alias mux='mocp -x'
+alias mu='mocp -S ; mocp -o shuffle, repeat ; mocp -p' # musik starten (mit mocp)
+alias ba='/usr/bin/vim ~/.bash_aliases' # oeffnet vi und die datei
+alias so='. ~/.bash_aliases' # laedt die datei neu
+alias barc='/usr/bin/vim ~/.bashrc' # siehe oben
+alias sorc='. ~/.bashrc' # siehe oben
 #alias shot='scrot -d 5 -c -t 10' # bildschirmfoto
 alias kal='clear; echo -n "Heutiges Datum: "date;echo;cal -3m' # kalender ausgeben mit vorigem, jetztigem und naechstem monat sowie heutiges datum
 alias y=~/bin/yahato.sh # yahato starten
@@ -43,30 +46,28 @@ alias far='feh -dFSname -R *' # bilder rekursiv anzeigen
 
 # Ubuntu
 #alias pa='pulseaudio -k; pulseaudio -D' # pulseaudio daemon neustarten
-#alias get='sudo apt-get install' # installier ...
+alias get='sudo apt-get install' # installier ...
+alias up='sudo apt-get update && sudo apt-get upgrade'
 
 # ArchLinux
 #alias x='startx ; logout'
-alias x='startx ; vlock -a' # x starten und bei error das virtuelle terminal locken
+#alias x='startx ; vlock -a' # x starten und bei error das virtuelle terminal locken
 #alias x='startx'
-alias up='sudo pacman -Syu' # systemupdate ausfuehren
-alias lamp='sudo /etc/rc.d/httpd restart' # && sudo /etc/rc.d/mysqld restart' # apache starten
-alias vb='sudo modprobe vboxdrv' # virtualbox treiber laden
-alias hib='sudo hibernate -F /etc/hibernate/ususpend-disk.conf' # in den ruhezustand wechseln
-alias cups='sudo /etc/rc.d/cups start' # cups starten
-alias syn='synergyc 192.168.1.128'
+#alias up='sudo pacman -Syu' # systemupdate ausfuehren
+#alias lamp='sudo /etc/rc.d/httpd start && sudo /etc/rc.d/mysqld start' # apache starten
+#alias vb='sudo modprobe vboxdrv' # virtualbox treiber laden
+#alias hib='sudo hibernate -F /etc/hibernate/ususpend-disk.conf' # in den ruhezustand wechseln
+#alias cups='sudo /etc/rc.d/cups start' # cups starten
 
 # shell-fm
-#alias shell-fm='/home/$USER/repos/shell-fm/source/shell-fm'
-alias inf='echo info %t by %a - %l on %s/%S - %r | nc localhost 54311'
+alias shell-fm='shell-fm -d'
+alias inf='echo info %t by %a - %l on %s/%S | nc localhost 54311'
 alias skip='echo skip | nc localhost 54311'
 alias quit='echo quit | nc localhost 54311'
 alias love='echo love | nc localhost 54311'
 alias ban='echo ban | nc localhost 54311'
 
-. .bash_net
-
 # Verschiedene Medien Mounten
 alias sd='sudo mount -t auto /dev/mmcblk0p1 /media/sd' # sdkarte mounten
-alias cdr='sudo mount -t auto /dev/cdrom /media/cd' # cd mounten
+alias cdr='sudo mount -t auto /dev/cdrom /media/cdrom0' # cd mounten
 alias dvd='sudo mount -t auto /dev/dvd /media/dvd' # dvd mounten

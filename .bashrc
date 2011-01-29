@@ -88,8 +88,8 @@ export PS1='\[\033[1;31m\]<\[\033[1;30m\]<\[\033[1;31m\]< \[\033[0;31m\]\t | \h\
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
-if [ -f .bash_aliases ]; then
-    . .bash_aliases
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
 fi
 
 # enable programmable completion features (you don't need to enable
@@ -98,9 +98,6 @@ fi
 if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
 fi
-
-#unset $PS1
-#export $PS1="[\d \A, Bash Version \V, \# Commands, \j Jobs, tty #\l]\n[\u@\H:\w] \$"
 
 # dient zur verschluesselung
 export GPG_TTY='tty'
@@ -118,32 +115,33 @@ export LESS_TERMCAP_us=$'\E[0m'
 complete -cf sudo
 
 # WMII - Stuff (http://wiki.archlinux.org/index.php/Wmii)
-WMII_IS_RUNNING=`ps a | grep wmii | awk '/[^"grep"] wmii$/'`
+WMII_IS_RUNNING=`ps a | grep -v grep | grep wmii | awk '/[^"grep"] wmii$/'`
 if [ -n "$WMII_IS_RUNNING" ]; then
-  PROMPT_COMMAND='dirs | wmiir write /client/sel/label'
+	PROMPT_COMMAND='dirs | wmiir write /client/sel/label'
 fi
 
 # Exports
 export EDITOR=vim
 export VISUAL=vim
-export BROWSER=/usr/bin/firefox
-export PATH=${PATH}:/opt:/usr/lib:/home/${USER}/bin/
-
-# xdg
-#export XDG_DATA_HOME=/home/${USER}/.data
-#export XDG_CONFIG_HOME=/home/${USER}/.config
-#export XDG_CACHE_HOME=/home/${USER}/.cache
+export BROWSER=/usr/bin/chromium-browser
+export PATH=${PATH}:/opt:/usr/lib
 
 # colors
-. .bash_colors
+. /home/${USER}/.bash_colors
 
 # functions
-. .bash_functions
+. /home/${USER}/.bash_functions
 
 #CDPATH='.:..:../..:~'
 
 # bc zeilenumbruch verhindern (http://www.onli-blogging.de/index.php?/881/bc-und-Zeilenlaenge.html)
 export BC_LINE_LENGTH=0
+
+# include some things
+# should not be visible to anyone
+if [ -f /home/${USER}/.bash_stuff ] ; then
+	. /home/${USER}/.bash_stuff
+fi
 
 # volume
 #if [ -e /tmp/.volume ] ; then
@@ -157,3 +155,8 @@ export BC_LINE_LENGTH=0
 # von http://www.deesaster.org/blog/index.php?/archives/1513
 bind '"\e[A"':history-search-backward
 bind '"\e[B"':history-search-forward
+
+# xdg (i.e. for uzbl.org)
+#export XDG_DATA_HOME=/home/${USER}/.data
+#export XDG_CONFIG_HOME=/home/${USER}/.config
+#export XDG_CACHE_HOME=/home/${USER}/.cache

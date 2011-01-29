@@ -1,57 +1,24 @@
-#function vlc {
-#	command vlc "$@" >/dev/null 2>&1
-#}
-
-#function mplayer {
-#	command mplayer "$@" >/dev/null 2>&1
-#}
-
 function ls {
 	command ls -F --color=auto "$@"
 }
-function l {
-	ls -lh "$@"
-}
-function ll {
-	ls -lah "$@"
-}
-function la {
-	ls -A "$@"
-}
-function lt {
-	ls -lhtr "$@"
-}
-
-function dh {
-	df -h "$@"
-}
-
-function v {
-	command vim "$@"
-}
-
-function g {
-	command grep -irs "$@"
-}
-
-function less {
-	/usr/share/vim/vim73/macros/less.sh "$@"
-}
-
-function le {
-	command less "$@"
-}
-
 function axel {
 	command axel -n 10 -av "$@"
 }
-
-function yo {
-	command yaourt "$@"
+function l {
+  ls -lh "$@"
+}
+function ll {
+  ls -lah "$@"
+}
+function la {
+  ls -A "$@"
+}
+function lt {
+  ls -lhtr "$@"
 }
 
-function tf {
-	command tail -f "$@"
+function dh {
+  df -h "$@"
 }
 
 function mkdir {
@@ -101,8 +68,8 @@ function returncode {
 }
 
 function mkcd () {
-  mkdir -p "$@"
-  cd "$@"
+  mkdir -p "$1"
+  cd "$1"
 }
 
 ###   Handy Extract Program
@@ -125,4 +92,10 @@ extract () {
     else
         echo "'$1' is not a valid file"
     fi
+}
+
+bak () {
+	filename=$1
+	filetime=$(date +%Y%m%d_%H%M%S)
+	cp ${filename} ${filename}_${filetime}
 }
