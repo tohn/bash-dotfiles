@@ -1,6 +1,6 @@
 # enable color support of ls and also add handy aliases
 #if [ -x /usr/bin/dircolors ]; then
-    eval `dircolors -b /home/${USER}/.bash_dircolors` # eigene festlegung, aus: http://www.infodrom.org/~joey/Writing/freeX/console/
+    eval `dircolors -b /home/${USER}/repos/bash-dotfiles/.bash_dircolors` # eigene festlegung, aus: http://www.infodrom.org/~joey/Writing/freeX/console/
     # war mal eval `dircolors -b`
     #alias ls='ls --color=auto' # gibt ls farbig aus
     #alias dir='dir --color=auto'
@@ -48,6 +48,8 @@ alias far='feh -dFSname -R *' # bilder rekursiv anzeigen
 #alias pa='pulseaudio -k; pulseaudio -D' # pulseaudio daemon neustarten
 alias get='sudo apt-get install' # installier ...
 alias up='sudo apt-get update && sudo apt-get upgrade'
+alias ga='xclip -o | axel -'
+alias gw='xclip -o | wget -i -'
 
 # ArchLinux
 #alias x='startx ; logout'

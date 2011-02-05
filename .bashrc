@@ -2,6 +2,8 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
+REPO="/home/${USER}/repos/bash-dotfiles"
+
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
@@ -88,8 +90,8 @@ export PS1='\[\033[1;31m\]<\[\033[1;30m\]<\[\033[1;31m\]< \[\033[0;31m\]\t | \h\
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+if [ -f $REPO/.bash_aliases ]; then
+    . $REPO/.bash_aliases
 fi
 
 # enable programmable completion features (you don't need to enable
@@ -127,10 +129,10 @@ export BROWSER=/usr/bin/chromium-browser
 export PATH=${PATH}:/opt:/usr/lib
 
 # colors
-. /home/${USER}/.bash_colors
+. $REPO/.bash_colors
 
 # functions
-. /home/${USER}/.bash_functions
+. $REPO/.bash_functions
 
 #CDPATH='.:..:../..:~'
 
@@ -139,8 +141,8 @@ export BC_LINE_LENGTH=0
 
 # include some things
 # should not be visible to anyone
-if [ -f /home/${USER}/.bash_stuff ] ; then
-	. /home/${USER}/.bash_stuff
+if [ -f $REPO/bash_stuff ] ; then
+	. $REPO/bash_stuff
 fi
 
 # volume
@@ -160,3 +162,8 @@ bind '"\e[B"':history-search-forward
 #export XDG_DATA_HOME=/home/${USER}/.data
 #export XDG_CONFIG_HOME=/home/${USER}/.config
 #export XDG_CACHE_HOME=/home/${USER}/.cache
+
+# ibus
+export GTK_IM_MODULE=ibus
+export XMODIFIERS=@im=ibus
+export QT_IM_MODULE=ibus

@@ -3,7 +3,5 @@ by Yannic Haupenthal
 
 This repos contains my bash dotfiles, i.e. my .bashrc.
 
-To link one or all files to your home, execute:
-ln -s /path/to/repos/.bashrc ~/.bashrc
-or:
-ln -s /path/to/repos/.bash* ~
+To link the bashrc to your home, execute:
+ln -s /home/${USER}/repos/bash-dotfiles/.bashrc ~/.bashrc
