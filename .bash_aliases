@@ -1,6 +1,6 @@
 # enable color support of ls and also add handy aliases
 #if [ -x /usr/bin/dircolors ]; then
-    eval `dircolors -b /home/${USER}/repos/bash-dotfiles/.bash_dircolors` # eigene festlegung, aus: http://www.infodrom.org/~joey/Writing/freeX/console/
+    eval `dircolors -b ${HOME}/repos/bash-dotfiles/.bash_dircolors` # eigene festlegung, aus: http://www.infodrom.org/~joey/Writing/freeX/console/
     # war mal eval `dircolors -b`
     #alias ls='ls --color=auto' # gibt ls farbig aus
     #alias dir='dir --color=auto'

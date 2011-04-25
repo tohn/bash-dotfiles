@@ -2,7 +2,7 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
-REPO="/home/${USER}/repos/bash-dotfiles"
+REPO="${HOME}/repos/bash-dotfiles"
 
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
